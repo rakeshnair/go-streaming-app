@@ -33,7 +33,7 @@ func check(e error) {
 }
 
 func setup() {
-	dir := "/var/segment/app/contents"
+	dir := "contents"
 	_, err := os.Stat(dir)
 	if err != nil {
 		// Create the content dir
@@ -41,7 +41,7 @@ func setup() {
 		Log.Println("Creating the content directory")
 	}
 	EventLog = &lumberjack.Logger{
-		Filename:   "/var/segment/app/contents/lumberjack-contents.log",
+		Filename:   "contents/lumberjack-contents.log",
 		MaxSize:    1, // megabytes
 		MaxBackups: 3,
 		MaxAge:     28, //days
@@ -55,7 +55,7 @@ func write(msg []byte) {
 }
 
 func streamWriter() {
-	files := [1]string{"/var/segment/app/seed/yob2015.txt"}
+	files := [1]string{"yob2015.txt"}
 	for _, f := range files {
 		Log.Printf("Reading new file %s\n", f)
 
@@ -86,7 +86,7 @@ func streamWriter() {
 func main() {
 
 	// Opening log file for writing
-	lf, e1 := os.OpenFile("/var/segment/log/streaming-app.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, os.ModeAppend)
+	lf, e1 := os.OpenFile("streaming-app.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, os.ModeAppend)
 	if e1 != nil {
 		Log.Println("Could not open log file")
 		panic(e1)
