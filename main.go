@@ -55,7 +55,7 @@ func write(msg []byte) {
 }
 
 func streamWriter() {
-	files := [1]string{"yob2015.txt"}
+	files := [1]string{"seed.txt"}
 	for _, f := range files {
 		Log.Printf("Reading new file %s\n", f)
 
@@ -86,7 +86,7 @@ func streamWriter() {
 func main() {
 
 	// Opening log file for writing
-	lf, e1 := os.OpenFile("streaming-app.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, os.ModeAppend)
+	lf, e1 := os.OpenFile("main-app.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, os.ModeAppend)
 	if e1 != nil {
 		Log.Println("Could not open log file")
 		panic(e1)

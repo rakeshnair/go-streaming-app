@@ -1,2 +1,2 @@
-streaming-app.log
+*.log
 contents/*
