@@ -33,15 +33,8 @@ func check(e error) {
 }
 
 func setup() {
-	dir := "contents"
-	_, err := os.Stat(dir)
-	if err != nil {
-		// Create the content dir
-		os.Mkdir(dir, 0744)
-		Log.Println("Creating the content directory")
-	}
 	EventLog = &lumberjack.Logger{
-		Filename:   "contents/lumberjack-contents.log",
+		Filename:   "/data/events.log",
 		MaxSize:    1, // megabytes
 		MaxBackups: 3,
 		MaxAge:     28, //days
